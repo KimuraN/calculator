@@ -12,10 +12,21 @@ public class OperatorPanel extends JPanel {
 	}
 
 	private void initOperatorButtons() {
-		char tmp[] = { '+', '-', '×', '÷', '=', 'C' };
+		String tmp[] = { "+", "-", "×", "÷", "=", "C" };
 		for (int i = 0; i < operatorButtons.length; i++) {
 			operatorButtons[i] = new OperatorButton(tmp[i]);
 		}
+	}
+
+	public static boolean isOperatorString(String str) {
+		switch (str) {
+		case "+":
+		case "-":
+		case "÷":
+		case "×":
+			return true;
+		}
+		return false;
 	}
 
 }

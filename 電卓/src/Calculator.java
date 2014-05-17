@@ -10,8 +10,8 @@ public class Calculator {
 	NumberPanel NP;
 	OperatorPanel OP;
 
-	public static double TMP = 0;
-	public static char OPE = '\u0000';
+	public static double TMP = 0;// 計算時に一時的に値を格納
+	public static String OPE = null;// 演算子を格納
 
 	public Calculator() {
 		RP = ResultPanel.get();
@@ -37,26 +37,30 @@ public class Calculator {
 	public static void Clear() {
 		ResultPanel.get().setText("0");
 		TMP = 0;
-		OPE = '\u0000';
+		OPE = null;
 	}
 
-	public static double getCaluResult(double num) {
-		double result = 0.0;
+	// 覚えていた値と画面上の値を計算し更新
+	public static void doCalu() {
+		ResultPanel RP = ResultPanel.get();
+		// 画面上の値
+		double panelNum = RP.getTextAreaNum();
+
 		switch (Calculator.OPE) {
-		case '+':
-			result = Calculator.TMP + num;
+		case "+":
+			Calculator.TMP = Calculator.TMP + panelNum;
 			break;
-		case '-':
-			result = Calculator.TMP - num;
+		case "-":
+			Calculator.TMP = Calculator.TMP - panelNum;
 			break;
-		case '÷':
-			result = Calculator.TMP / num;
+		case "÷":
+			Calculator.TMP = Calculator.TMP / panelNum;
 			break;
-		case '×':
-			result = Calculator.TMP * num;
+		case "×":
+			Calculator.TMP = Calculator.TMP * panelNum;
 			break;
 		}
-		Calculator.OPE = '\u0000';
-		return result;
+		RP.setText(Double.toString(Calculator.TMP));
+		Calculator.OPE = null;
 	}
 }

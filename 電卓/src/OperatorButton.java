@@ -5,35 +5,31 @@ import javax.swing.JButton;
 
 public class OperatorButton extends JButton implements ActionListener {
 
-	char operator;
+	String operator;
 
-	public OperatorButton(char operator) {
-		super(Character.toString(operator));
+	public OperatorButton(String operator) {
+		super(operator);
 		this.operator = operator;
 		addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+		ResultPanel RP = ResultPanel.get();
 		switch (operator) {
-		case 'C':
+		case "C":
 			Calculator.Clear();
 			break;
-		case '+':
-		case '-':
-		case '÷':
-		case '×':
+		case "+":
+		case "-":
+		case "÷":
+		case "×":
 			Calculator.OPE = operator;
-			Calculator.TMP = ResultPanel.get().getTextAreaNum();
-			ResultPanel.get().setText("0");
+			Calculator.TMP = RP.getTextAreaNum();
+			ResultPanel.get().setText(operator);
 			return;
-		case '=':
-			if (Calculator.OPE != '\u0000') {
-				Calculator.TMP = Calculator.getCaluResult(ResultPanel.get()
-						.getTextAreaNum());
-				ResultPanel.get().setText(String.valueOf(Calculator.TMP));
-			}
+		case "=":
+			Calculator.doCalu();
 			break;
 		}
 	}

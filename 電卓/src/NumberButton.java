@@ -17,9 +17,11 @@ public class NumberButton extends JButton implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		ResultPanel RP = ResultPanel.get();
-		String t = RP.getText();
+		String panelStr = RP.getText();
 
-		if (t.equals("0")) {
+		if (panelStr.equals("0")) {
+			RP.setText(String.valueOf(number));
+		} else if (OperatorPanel.isOperatorString(panelStr)) {
 			RP.setText(String.valueOf(number));
 		} else {
 			String tmp = RP.getText() + numStr;
