@@ -1,6 +1,8 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.GridLayout;
 
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 
 public class Calculator {
@@ -16,20 +18,21 @@ public class Calculator {
 	public Calculator() {
 		RP = ResultPanel.get();
 		frame = new JFrame("電卓");
-		frame.setSize(new Dimension(640, 480));
+		frame.setLayout(new GridLayout(3, 1));
+		frame.setSize(new Dimension(240, 260));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public static void main(String args[]) {
 		Calculator cal = new Calculator();
 
-		cal.frame.add(cal.RP, BorderLayout.NORTH);
+		cal.frame.add(cal.RP);
+		
+		cal.NP = new NumberPanel();
+		cal.frame.add(cal.NP);
 
 		cal.OP = new OperatorPanel();
-		cal.frame.add(cal.OP, BorderLayout.CENTER);
-
-		cal.NP = new NumberPanel();
-		cal.frame.add(cal.NP, BorderLayout.SOUTH);
+		cal.frame.add(cal.OP);
 
 		cal.frame.setVisible(true);
 	}

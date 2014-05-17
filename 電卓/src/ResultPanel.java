@@ -7,13 +7,19 @@ class ResultPanel extends JTextArea {
 	public static ResultPanel RP;
 
 	private ResultPanel() {
-		super("0", 1, 30);
-		setFont(new Font("Arial", Font.PLAIN, 60));
+		super("0");
+		setFont(new Font("Arial", Font.PLAIN, 30));
 		setEditable(false);
 	}
 
 	public double getTextAreaNum() {
-		return Double.parseDouble(getText());
+		try{
+			double num = Double.parseDouble(getText());
+			return num;
+		}catch(NumberFormatException e){
+			//演算子連打は無視する。
+			return Calculator.TMP;
+		}
 	}
 
 	public static ResultPanel get() {

@@ -1,3 +1,5 @@
+import java.awt.FlowLayout;
+
 import javax.swing.JPanel;
 
 public class NumberPanel extends JPanel {
