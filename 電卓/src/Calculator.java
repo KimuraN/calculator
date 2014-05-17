@@ -1,8 +1,7 @@
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.io.ObjectInputStream.GetField;
 
-import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 
 public class Calculator {
@@ -27,7 +26,7 @@ public class Calculator {
 		Calculator cal = new Calculator();
 
 		cal.frame.add(cal.RP);
-		
+
 		cal.NP = new NumberPanel();
 		cal.frame.add(cal.NP);
 
@@ -46,24 +45,29 @@ public class Calculator {
 	// 覚えていた値と画面上の値を計算し更新
 	public static void doCalu() {
 		ResultPanel RP = ResultPanel.get();
+		//画面上が数字でない（演算子）だったら何もしない
+		if(OperatorPanel.isOperatorString(RP.getText())){
+			return;
+		}
 		// 画面上の値
 		double panelNum = RP.getTextAreaNum();
-
-		switch (Calculator.OPE) {
-		case "+":
-			Calculator.TMP = Calculator.TMP + panelNum;
-			break;
-		case "-":
-			Calculator.TMP = Calculator.TMP - panelNum;
-			break;
-		case "÷":
-			Calculator.TMP = Calculator.TMP / panelNum;
-			break;
-		case "×":
-			Calculator.TMP = Calculator.TMP * panelNum;
-			break;
+		if (Calculator.OPE != null) {
+			switch (Calculator.OPE) {
+			case "+":
+				Calculator.TMP = Calculator.TMP + panelNum;
+				break;
+			case "-":
+				Calculator.TMP = Calculator.TMP - panelNum;
+				break;
+			case "÷":
+				Calculator.TMP = Calculator.TMP / panelNum;
+				break;
+			case "×":
+				Calculator.TMP = Calculator.TMP * panelNum;
+				break;
+			}
+			RP.setText(Double.toString(Calculator.TMP));
+			Calculator.OPE = null;
 		}
-		RP.setText(Double.toString(Calculator.TMP));
-		Calculator.OPE = null;
 	}
 }
