@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.io.ObjectInputStream.GetField;
 
 import javax.swing.JFrame;
 
@@ -19,8 +20,8 @@ public class Calculator {
 	public static void main(String args[]) {
 		Calculator cal = new Calculator();
 
-		cal.RP = new ResultPanel();
-		cal.frame.add(cal.RP, BorderLayout.NORTH);
+		cal.RP = ResultPanel.get();
+		cal.frame.add( cal.RP, BorderLayout.NORTH);
 
 		cal.OP = new OperatorPanel();
 		cal.frame.add(cal.OP, BorderLayout.CENTER);
