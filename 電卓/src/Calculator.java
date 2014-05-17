@@ -20,6 +20,7 @@ public class Calculator {
 		frame.setLayout(new GridLayout(3, 1));
 		frame.setSize(new Dimension(240, 260));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
 	}
 
 	public static void main(String args[]) {

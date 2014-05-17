@@ -11,6 +11,16 @@ class ResultPanel extends JTextArea {
 		setFont(new Font("Arial", Font.PLAIN, 30));
 		setEditable(false);
 	}
+	
+	@Override
+	public void setText(String str){
+		if(str.length() > 14){
+			super.setText("Screen is small");
+		}else{
+			super.setText(str);
+		}
+	}
+	
 
 	public double getTextAreaNum() {
 		try{

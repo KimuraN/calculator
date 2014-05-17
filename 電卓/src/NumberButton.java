@@ -25,7 +25,7 @@ public class NumberButton extends JButton implements ActionListener {
 			RP.setText(String.valueOf(number));
 		} else {
 			String tmp = RP.getText() + numStr;
-			if (tmp.length() < 10) {
+			if (tmp.length() < 14) {
 				RP.setText(tmp);
 			}
 		}
