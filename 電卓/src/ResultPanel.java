@@ -2,9 +2,8 @@ import java.awt.Font;
 
 import javax.swing.JTextArea;
 
-public class ResultPanel extends JTextArea {
+class ResultPanel extends JTextArea {
 
-	public static int ResultNumber;// 電卓の画面に表示する値
 	public static ResultPanel RP;
 
 	private ResultPanel() {
@@ -13,8 +12,8 @@ public class ResultPanel extends JTextArea {
 		setEditable(false);
 	}
 
-	public void reset() {
-		ResultNumber = 0;
+	public double getTextAreaNum() {
+		return Double.parseDouble(getText());
 	}
 
 	public static ResultPanel get() {

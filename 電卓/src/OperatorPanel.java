@@ -12,7 +12,7 @@ public class OperatorPanel extends JPanel {
 	}
 
 	private void initOperatorButtons() {
-		char tmp[] = { '+', '-', '×', '÷', '＝', 'C' };
+		char tmp[] = { '+', '-', '×', '÷', '=', 'C' };
 		for (int i = 0; i < operatorButtons.length; i++) {
 			operatorButtons[i] = new OperatorButton(tmp[i]);
 		}

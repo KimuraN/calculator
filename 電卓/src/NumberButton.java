@@ -5,10 +5,12 @@ import javax.swing.JButton;
 
 public class NumberButton extends JButton implements ActionListener {
 	public int number;
+	public String numStr;
 
-	public NumberButton(int number) {
-		super(Integer.toString(number));
+	public NumberButton(int number, String s) {
+		super(s);
 		this.number = number;
+		numStr = s;
 		addActionListener(this);
 	}
 
@@ -18,13 +20,12 @@ public class NumberButton extends JButton implements ActionListener {
 		String t = RP.getText();
 
 		if (t.equals("0")) {
-			RP.ResultNumber = number;
 			RP.setText(String.valueOf(number));
 		} else {
-			int tmp = RP.ResultNumber;
-			String next = Integer.toString(tmp) + Long.toString(number);
-			RP.ResultNumber = Integer.valueOf(next);
-			RP.setText(String.valueOf(Long.parseLong(next)));
+			String tmp = RP.getText() + numStr;
+			if (tmp.length() < 10) {
+				RP.setText(tmp);
+			}
 		}
 	}
 
