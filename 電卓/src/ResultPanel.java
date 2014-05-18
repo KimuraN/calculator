@@ -11,23 +11,23 @@ class ResultPanel extends JTextArea {
 		setFont(new Font("Arial", Font.PLAIN, 30));
 		setEditable(false);
 	}
-	
+
 	@Override
-	public void setText(String str){
-		if(str.length() > 14){
-			super.setText("Screen is small");
-		}else{
+	public void setText(String str) {
+		if (str.length() > 14) {
+			super.setText(str.substring(0, 10)
+					+ str.substring(str.length() - 4, str.length()));
+		} else {
 			super.setText(str);
 		}
 	}
-	
 
 	public double getTextAreaNum() {
-		try{
+		try {
 			double num = Double.parseDouble(getText());
 			return num;
-		}catch(NumberFormatException e){
-			//演算子連打は無視する。
+		} catch (NumberFormatException e) {
+			// 演算子連打は無視する。
 			return Calculator.TMP;
 		}
 	}
